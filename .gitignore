@@ -1,0 +1,9 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.zip
+
+# local notes — keep personal context out of the public repo
+context/
+Contents/
