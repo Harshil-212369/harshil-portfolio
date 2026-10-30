@@ -184,6 +184,7 @@
   .pcard .sub{color:var(--red);font-size:13px;margin:3px 0 16px}
   .pcard p{color:var(--text);margin-bottom:14px;max-width:760px}
   .pcard p .hl{color:var(--white);font-weight:600}
+  .pcard p code{color:var(--cyan);font-family:inherit}
   .chips{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
   .chip{font-size:11.5px;color:var(--text);background:var(--panel-2);
         border:1px solid var(--line);border-radius:5px;padding:3px 9px}
@@ -368,7 +369,7 @@
 <!-- ===================== PROJECTS ===================== -->
 <section class="block" id="projects">
   <div class="wrap">
-    <div class="cmdbar reveal"><span class="dollar">$</span><span class="cmd">ls projects/</span><span class="note">// 3 entries</span></div>
+    <div class="cmdbar reveal"><span class="dollar">$</span><span class="cmd">ls projects/</span><span class="note">// 8 entries</span></div>
 
     <!-- traffic-light -->
     <article class="pcard reveal">
@@ -410,64 +411,166 @@
       </div>
     </article>
 
-    <!-- crop-recommender -->
+    <!-- reachable -->
     <article class="pcard reveal">
-      <div class="head"><span class="fn">crop-recommender.md</span><span class="meta">MEC 2025 · 89/100</span></div>
+      <div class="head"><span class="fn">reachable.md</span><span class="meta">IBM TechXchange hackathon · Aug 2026</span></div>
       <div class="body">
-        <h3>AI-Driven Crop Recommendation System</h3>
-        <div class="sub">MEC 2025 Programming Competition · High Distinction</div>
-        <p>Built in <span class="hl">8 hours of live coding</span> under blind-dataset evaluation. A
-           Random Forest regressor predicts crop yields from soil composition (pH, N, P, K), weather
-           forecasts, and rotation history, then ranks recommendations on a dual axis —
-           <span class="hl">yield vs. sustainability</span> (water and fertilizer efficiency).</p>
-        <p><span class="hl">Why it scored well:</span> the pipeline was built fault-tolerant against
-           unknown dataset formats — judges threw a blind dataset at us on presentation day and it
-           handled it without modification.</p>
+        <h3>Reachable — Liveness Checker CLI</h3>
+        <div class="sub">IBM TechXchange 2026 Dev Day Hackathon · solo entry · top 50 worldwide</div>
+        <p>A command-line tool that warns when a saved code change has <span class="hl">not actually
+           reached the system that runs it</span> — built after six such incidents in my own projects
+           over eight weeks.</p>
+        <p>Runs 7 checks on Git state and file registration (unpushed commits, untracked or ignored
+           files, files missing required metadata), each with a suggested fix. When it lacks evidence it
+           answers <span class="hl">UNCONFIRMED</span> instead of guessing. The code and the exported
+           IBM Bob session logs are public.</p>
 
         <div class="chips">
-          <span class="chip lang">Python 3.12</span><span class="chip">Scikit-learn</span>
-          <span class="chip">Streamlit</span><span class="chip">Pandas</span>
-          <span class="chip">NumPy</span><span class="chip">Matplotlib</span>
+          <span class="chip lang">Python</span><span class="chip">Git</span><span class="chip">IBM Bob 2.0</span>
         </div>
 
         <div class="metrics">
-          <div class="metric"><div class="v up">35/40</div><div class="k">strategy / algorithm</div></div>
-          <div class="metric"><div class="v">35/35</div><div class="k">code (test + efficiency)</div></div>
-          <div class="metric"><div class="v">19/25</div><div class="k">presentation</div></div>
-          <div class="metric"><div class="v">89/100</div><div class="k">total score</div></div>
+          <div class="metric"><div class="v up">top 50</div><div class="k">worldwide, solo entry</div></div>
+          <div class="metric"><div class="v">7</div><div class="k">liveness checks</div></div>
+          <div class="metric"><div class="v">USD 1,599</div><div class="k">conference seat awarded</div></div>
         </div>
 
-        <div class="credits"><b>Team:</b> Harshil Suthar, Davidy Kwok, Kyle Datoo</div>
+        <p>The prize was a seat at <span class="hl">IBM TechXchange 2026</span> in Atlanta
+           (Oct 26–29), and IBM issued an invitation letter. I couldn't attend: the wait time for a
+           US visa appointment ran past the conference dates.</p>
+
         <div class="plinks">
           <a href="https://github.com/Harshil-212369" target="_blank" rel="noopener">Code</a>
-          <span class="wip" data-wip>Dashboard demo [WIP]</span>
+          <a href="docs/ibm-techxchange-2026-invitation-redacted.pdf" target="_blank" rel="noopener">IBM invitation letter (PDF, redacted)</a>
         </div>
       </div>
     </article>
 
-    <!-- ecoeats -->
+    <!-- ci-pipeline -->
     <article class="pcard reveal">
-      <div class="head"><span class="fn">ecoeats.md</span><span class="meta">hackathon · 2024</span></div>
+      <div class="head"><span class="fn">ci-pipeline.md</span><span class="meta">personal · Jul 2026</span></div>
       <div class="body">
-        <h3>EcoEats — Photo to Recipe</h3>
-        <div class="sub">Weekend hackathon</div>
-        <p>Full-stack app that takes a photo of your fridge, identifies ingredients, and generates
-           recipes from what you already have. Built to cut household food waste.</p>
+        <h3>CI Course-Material Pipeline</h3>
+        <div class="sub">Lecture recordings + slides → one PDF of study notes, every week</div>
+        <p>An 8-stage pipeline that runs on a weekly <span class="hl">GitHub Actions</span> schedule on
+           an ephemeral Ubuntu runner, with rclone syncing to and from OneDrive — no personal computer
+           needs to be on.</p>
+        <p>Every stage is idempotent, with token-budget guardrails and API quota handling, so re-runs are
+           always safe. <span class="hl">Fixed a false success:</span> a run once reported "passed" though
+           the final PDF never got made. Each run now records pass/fail for every stage in a JSON manifest,
+           with CI annotations and on-disk failure markers.</p>
 
         <div class="chips">
-          <span class="chip lang">Python</span><span class="chip lang">JavaScript</span>
-          <span class="chip">HTML</span><span class="chip">Tailwind CSS</span>
-          <span class="chip">Flask</span><span class="chip">Azure Vision AI</span><span class="chip">Azure OpenAI</span>
+          <span class="chip lang">Python</span><span class="chip">Claude API</span>
+          <span class="chip">GitHub Actions</span><span class="chip">Docker</span><span class="chip">rclone</span>
         </div>
 
-        <pre class="pipe">Photo <span class="a">→</span> Azure Vision AI <span class="a">→</span> ingredient list
-      <span class="a">→</span> Azure OpenAI    <span class="a">→</span> recipe generation
-      <span class="a">→</span> Flask backend   <span class="a">→</span> Tailwind frontend</pre>
+        <pre class="pipe">OneDrive <span class="a">→</span> rclone sync <span class="a">→</span> convert
+  <span class="a">→</span> transcribe <span class="a">→</span> OCR
+  <span class="a">→</span> LLM summarize <span class="a">→</span> PDF merge
+  <span class="a">→</span> JSON manifest (pass/fail per stage) <span class="a">→</span> OneDrive</pre>
+      </div>
+    </article>
 
-        <div class="credits"><b>Team:</b> Harshil Suthar, Nayan Mapara, Dhruv Patel</div>
+    <!-- openwrt -->
+    <article class="pcard reveal">
+      <div class="head"><span class="fn">openwrt-home-net.md</span><span class="meta">personal · Oct 2026</span></div>
+      <div class="body">
+        <h3>Home Network on OpenWrt</h3>
+        <div class="sub">A subnet I control, behind a shared landlord network</div>
+        <p>Put a <span class="hl">GL.iNet Beryl AX</span> running OpenWrt in repeater (WISP) mode to get my
+           own subnet — no Ethernet access, no upstream admin rights.</p>
+        <p><span class="hl">The bug:</span> Chromecast and Nest Mini had disappeared from discovery. A port
+           scan showed they still answered unicast, so the fault was upstream multicast (mDNS) filtering.
+           The private subnet restored discovery. I also share USB storage over Samba as a LAN file share.</p>
+
+        <div class="chips">
+          <span class="chip">OpenWrt</span><span class="chip">GL-MT3000</span>
+          <span class="chip">mDNS</span><span class="chip">Samba</span><span class="chip">Fing</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- media-center -->
+    <article class="pcard reveal">
+      <div class="head"><span class="fn">media-center.md</span><span class="meta">Embedded Systems Design · Dec 2025</span></div>
+      <div class="body">
+        <h3>Embedded Media Center</h3>
+        <div class="sub">ARM Cortex-M3 · Keil MCB1700 · RTOS</div>
+        <p>A menu-driven media center in C with a <span class="hl">photo gallery, MP3 player, and Snake
+           game</span>, each running as a task under the Keil RTOS.</p>
+        <p>Interrupt-driven joystick input; bitmaps drawn on the LCD by converting .bmp images into C
+           arrays. Faults traced with the µVision debugger and a logic analyzer instead of guessing.</p>
+
+        <div class="chips">
+          <span class="chip lang">C</span><span class="chip">ARM Cortex-M3</span>
+          <span class="chip">Keil RTOS</span><span class="chip">µVision</span><span class="chip">Logic analyzer</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- leave-tracker -->
+    <article class="pcard reveal">
+      <div class="head"><span class="fn">leave-tracker.md</span><span class="meta">Data Engineering · Apr 2026 · A</span></div>
+      <div class="body">
+        <h3>Employee Leave Tracking System</h3>
+        <div class="sub">From ER diagram to a 6-table SQLite schema</div>
+        <p>Tracks leave requests, balances, and approvals. Keys and constraints enforce the business
+           rules (one balance per employee, leave type, and year).</p>
+        <p>10 SQL queries a manager would actually ask — approval rate, overlapping leave, average approval
+           time, next request in the queue — served through a menu-driven <span class="hl">Java (JDBC)</span>
+           program. A two-table delete runs in a transaction that rolls back if either step fails. Data
+           exports to XML validated against an XSD.</p>
+
+        <div class="chips">
+          <span class="chip lang">SQL</span><span class="chip lang">Java</span>
+          <span class="chip">SQLite</span><span class="chip">JDBC</span><span class="chip">XML / XSD</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- cloudflare -->
+    <article class="pcard reveal">
+      <div class="head"><span class="fn">cloudflare.md</span><span class="meta">ongoing · 2026</span></div>
+      <div class="body">
+        <h3>This Site, on Cloudflare</h3>
+        <div class="sub">harshilsuthar.com · plain HTML, CSS &amp; JS</div>
+        <p>Hosted on <span class="hl">Cloudflare Pages</span>, Git-connected: a push to
+           <code>main</code> is live in about 30 seconds. Custom domain, no build step.</p>
+        <p>A <span class="hl">Pages Function</span> (<code>/api/contact</code>) is the contact-form
+           backend: input validation, a honeypot for bots, and mail via Resend, with keys kept in Pages
+           environment secrets instead of the public repo. Next up: a recruiter chatbot on Workers AI,
+           Vectorize and D1.</p>
+
+        <div class="chips">
+          <span class="chip lang">HTML</span><span class="chip lang">CSS</span><span class="chip lang">JavaScript</span>
+          <span class="chip">Cloudflare Pages</span><span class="chip">Pages Functions</span><span class="chip">Claude Code</span>
+        </div>
+
+        <pre class="pipe">git push main
+  <span class="a">→</span> Cloudflare Pages build (no build step)
+  <span class="a">→</span> harshilsuthar.com
+  <span class="a">→</span> /api/contact <span class="a">→</span> Pages Function <span class="a">→</span> Resend</pre>
+
         <div class="plinks">
-          <a href="https://github.com/Harshil-212369" target="_blank" rel="noopener">Code</a>
-          <span class="wip" data-wip>Live demo [WIP]</span>
+          <a href="https://github.com/Harshil-212369/harshil-portfolio" target="_blank" rel="noopener">Source</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- java-bank -->
+    <article class="pcard reveal">
+      <div class="head"><span class="fn">java-bank.md</span><span class="meta">Jun 2024</span></div>
+      <div class="body">
+        <h3>Java Bank App</h3>
+        <div class="sub">Design first, then code</div>
+        <p>A banking application with role-based login for Managers and Customers through a JavaFX GUI.
+           Drew 4 UML diagrams (use case and class) before writing code, then reached
+           <span class="hl">90%+ test coverage</span> with JUnit.</p>
+
+        <div class="chips">
+          <span class="chip lang">Java</span><span class="chip">JavaFX</span>
+          <span class="chip">JUnit</span><span class="chip">UML (Violet)</span><span class="chip">NetBeans</span>
         </div>
       </div>
     </article>
